@@ -1,0 +1,32 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint
+        run: flake8 .
+
+      - name: Security
+        run: bandit -r .
+
+      - name: Test
+        run: pytest --cov=app --cov-fail-under=80
+
+      - name: Build Docker
+        run: docker build -t app:latest .
