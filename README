@@ -1,0 +1,100 @@
+🚀 Flask DevOps Project
+
+Projeto desenvolvido com foco em práticas modernas de DevOps e CloudOps, incluindo CI/CD, testes automatizados, containerização e boas práticas de desenvolvimento.
+
+📌 Objetivo
+
+Demonstrar um pipeline completo de DevOps com:
+
+Integração contínua (CI)
+Qualidade de código (Lint + Security)
+Testes automatizados com cobertura mínima
+Containerização com Docker
+Estrutura escalável de aplicação Flask
+🧱 Arquitetura do Projeto
+flask-devops-project/
+│
+├── app/
+│   ├── __init__.py
+│   ├── routes.py
+│   ├── health.py
+│
+├── tests/
+│   ├── test_routes.py
+│   ├── test_health.py
+│
+├── Dockerfile
+├── requirements.txt
+├── .flake8
+├── .github/workflows/ci.yml
+└── run.py
+⚙️ Tecnologias Utilizadas
+Python 3.10
+Flask
+Pytest + Pytest-Cov
+Flake8 (Lint)
+Bandit (Security)
+Docker
+GitHub Actions (CI/CD)
+▶️ Como executar o projeto
+1. Clonar o repositório
+git clone https://github.com/seu-usuario/flask-devops-project.git
+cd flask-devops-project
+2. Criar ambiente virtual (opcional)
+python -m venv venv
+venv\Scripts\activate  # Windows
+# ou
+source venv/bin/activate  # Linux/Mac
+3. Instalar dependências
+pip install -r requirements.txt
+4. Rodar a aplicação
+python run.py
+
+Acesse:
+
+http://localhost:5000
+http://localhost:5000/health
+🧪 Testes
+
+Executar testes com cobertura:
+
+pytest --cov=app --cov-fail-under=80
+🧹 Lint (Qualidade de Código)
+flake8 .
+🔐 Segurança
+bandit -r app
+🐳 Docker
+Build da imagem
+docker build -t flask-devops .
+Rodar container
+docker run -p 5000:5000 flask-devops
+🔄 CI/CD Pipeline
+
+O pipeline é executado automaticamente via GitHub Actions ao abrir um Pull Request para a branch main.
+
+Etapas do pipeline:
+✔ Lint (Flake8)
+✔ Segurança (Bandit)
+✔ Testes com cobertura mínima de 80%
+✔ Build Docker
+❤️ Health Check
+
+Endpoint utilizado para monitoramento:
+
+GET /health
+
+Resposta:
+
+{
+  "status": "healthy"
+}
+📈 Boas Práticas Aplicadas
+Separação de responsabilidades (Blueprints)
+Testes automatizados
+Pipeline CI/CD
+Containerização
+Código limpo e padronizado
+🚀 Próximos Passos (Evolução)
+Deploy na AWS (ECR + ECS)
+Monitoramento com CloudWatch/Grafana
+Infraestrutura como código (Terraform)
